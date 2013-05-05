@@ -6,6 +6,7 @@ import teamcerberus.cerberuscore.asm.CerberusCoreAccessTransformer;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
+@IFMLLoadingPlugin.MCVersion("1.5.2")
 public class CerberusCoreLoadingPlugin implements IFMLLoadingPlugin {
 
 	@Override
