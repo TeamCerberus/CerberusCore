@@ -21,9 +21,9 @@ public class IDReplacer {
 
 	public static void replaceItem(int itemId, Item item) {
 		clearItem(item.itemID);
-		
+
 		Item.itemsList[itemId] = item;
-        GameData.newItemAdded(item);
+		GameData.newItemAdded(item);
 	}
 
 	public static void clearBlock(int blockId) {

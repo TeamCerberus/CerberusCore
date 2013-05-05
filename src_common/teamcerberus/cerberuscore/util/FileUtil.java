@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import net.minecraft.client.Minecraft;
-
 public class FileUtil {
 	public static void saveObject(Object o, File file) {
 		saveObject(o, file.getPath());

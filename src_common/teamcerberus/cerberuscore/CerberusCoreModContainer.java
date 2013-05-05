@@ -22,6 +22,7 @@ public class CerberusCoreModContainer extends DummyModContainer {
 		myMeta.name = CerberusCore.id;
 	}
 
+	@Override
 	public boolean registerBus(EventBus bus, LoadController controller) {
 		bus.register(this);
 		return true;

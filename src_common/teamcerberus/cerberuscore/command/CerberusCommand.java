@@ -7,7 +7,6 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntityCommandBlock;
-import teamcerberus.cerberuscore.util.NetworkUtil;
 import teamcerberus.cerberuscore.util.ServerUtil;
 
 public abstract class CerberusCommand extends CommandBase {
@@ -48,11 +47,16 @@ public abstract class CerberusCommand extends CommandBase {
 
 	@Override
 	public boolean canCommandSenderUseCommand(ICommandSender sender) {
-		if (sender instanceof EntityPlayer) return canPlayerUseCommand((EntityPlayer) sender);
-		else if (sender instanceof TileEntityCommandBlock) return canCommandBlockUseCommand((TileEntityCommandBlock) sender);
-		else return canConsoleUseCommand();
+		if (sender instanceof EntityPlayer) {
+			return canPlayerUseCommand((EntityPlayer) sender);
+		} else if (sender instanceof TileEntityCommandBlock) {
+			return canCommandBlockUseCommand((TileEntityCommandBlock) sender);
+		} else {
+			return canConsoleUseCommand();
+		}
 	}
 
+	@Override
 	public List<?> addTabCompletionOptions(ICommandSender sender, String[] args) {
 		if (args.length == 0) {
 			return getListOfStringsFromIterableMatchingLastWord(args,

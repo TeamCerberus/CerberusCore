@@ -1,8 +1,6 @@
 package teamcerberus.cerberuscore.util;
 
 import java.io.File;
-import java.lang.reflect.Field;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -13,9 +11,12 @@ public class ServerUtil {
 	}
 
 	public static File getMinecraftFolder() {
-		if (NetworkUtil.isDedicatedServer()) return ServerUtil
-				.getServerInstance().getFile("");
-		else return Minecraft.getMinecraftDir();
+		if (NetworkUtil.isDedicatedServer()) {
+			return ServerUtil
+					.getServerInstance().getFile("");
+		} else {
+			return Minecraft.getMinecraftDir();
+		}
 	}
 
 	public static File getWorldFolder() {

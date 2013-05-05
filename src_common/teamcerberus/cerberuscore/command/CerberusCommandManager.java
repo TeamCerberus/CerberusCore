@@ -24,7 +24,9 @@ public class CerberusCommandManager {
 	}
 
 	public static CerberusCommandManager getInstance() {
-		if (instance == null) init();
+		if (instance == null) {
+			init();
+		}
 		return instance;
 	}
 }

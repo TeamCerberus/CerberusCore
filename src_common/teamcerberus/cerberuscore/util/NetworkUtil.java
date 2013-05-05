@@ -32,7 +32,8 @@ public class NetworkUtil {
 
 	public static void registerChannels(String[] strings,
 			IPacketHandler handler, Side side) {
-		for (String s : strings)
+		for (String s : strings) {
 			NetworkRegistry.instance().registerChannel(handler, s, side);
+		}
 	}
 }

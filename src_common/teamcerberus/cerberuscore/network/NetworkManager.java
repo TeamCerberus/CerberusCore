@@ -1,8 +1,5 @@
 package teamcerberus.cerberuscore.network;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import cpw.mods.fml.relauncher.Side;
 
 import teamcerberus.cerberuscore.CerberusCore;
@@ -20,7 +17,7 @@ public class NetworkManager {
 		serverPacketHandler = new CerberusServerPacketHandler();
 		clientPacketHandler = new CerberusClientPacketHandler();
 
-		String[] channels = new String[] {"syncedField"};
+		String[] channels = new String[] { "syncedField" };
 
 		String[] prefixedChannels = MiscUtil.addPrefixToArray(channels,
 				CerberusCore.channelPrefix);
