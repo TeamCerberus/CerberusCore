@@ -2,7 +2,6 @@ package teamcerberus.cerberuscore;
 
 import java.util.Map;
 
-import teamcerberus.cerberuscore.asm.CerberusCoreAccessTransformer;
 
 import cpw.mods.fml.relauncher.IFMLCallHook;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
@@ -17,7 +16,7 @@ public class CerberusCoreLoadingPlugin implements IFMLLoadingPlugin, IFMLCallHoo
 	
 	@Override
 	public String[] getASMTransformerClass() {
-		CerberusCoreAccessTransformer.addTransformerMap("cerberuscore_at.cfg");
+		//CerberusCoreAccessTransformer.addTransformerMap("cerberuscore_at.cfg");
 		return new String[] {"teamcerberus.cerberuscore.CerberusCoreAccessTransformer"};
 	}
 
