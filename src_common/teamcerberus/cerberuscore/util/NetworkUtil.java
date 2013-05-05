@@ -5,10 +5,6 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 
 public class NetworkUtil {
-	public static MinecraftServer getServerInstance(){
-		return FMLCommonHandler.instance().getMinecraftServerInstance();
-	}
-	
 	public static Side getSide(){
 		return FMLCommonHandler.instance().getEffectiveSide();
 	}
@@ -30,6 +26,6 @@ public class NetworkUtil {
 	}
 	
 	public static boolean isDedicatedServer(){
-		return isServer() && getServerInstance().isDedicatedServer();
+		return isServer() && ServerUtil.getServerInstance().isDedicatedServer();
 	}
 }
