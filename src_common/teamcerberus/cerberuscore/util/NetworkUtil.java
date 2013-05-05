@@ -1,7 +1,8 @@
 package teamcerberus.cerberuscore.util;
 
-import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.IPacketHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 public class NetworkUtil {
@@ -27,5 +28,11 @@ public class NetworkUtil {
 
 	public static boolean isDedicatedServer() {
 		return isServer() && ServerUtil.getServerInstance().isDedicatedServer();
+	}
+
+	public static void registerChannels(String[] strings,
+			IPacketHandler handler, Side side) {
+		for (String s : strings)
+			NetworkRegistry.instance().registerChannel(handler, s, side);
 	}
 }
