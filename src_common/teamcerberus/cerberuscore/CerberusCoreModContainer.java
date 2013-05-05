@@ -2,8 +2,7 @@ package teamcerberus.cerberuscore;
 
 import java.util.Arrays;
 
-import net.minecraftforge.event.EventBus;
-
+import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
 import cpw.mods.fml.common.DummyModContainer;
@@ -15,7 +14,8 @@ public class CerberusCoreModContainer extends DummyModContainer {
 	public CerberusCoreModContainer() {
 		super(new ModMetadata());
 		ModMetadata myMeta = super.getMetadata();
-		myMeta.authorList = Arrays.asList(new String[] { "newmangamers", "cazzar" });
+		myMeta.authorList = Arrays.asList(new String[] { "newmangamers",
+				"cazzar" });
 		myMeta.description = "A universal core.";
 		myMeta.modId = CerberusCore.id;
 		myMeta.version = CerberusCore.version;
@@ -26,7 +26,7 @@ public class CerberusCoreModContainer extends DummyModContainer {
 		bus.register(this);
 		return true;
 	}
-	
+
 	@Subscribe
 	public void onServerStarting(FMLServerStartingEvent ev) {
 

@@ -1,0 +1,7 @@
+forge/
+tmp/
+*.jar
+!lib
+!CerberusCore_dummy.jar
+minecraftforge-*.zip
+minecraftforge-built.jar

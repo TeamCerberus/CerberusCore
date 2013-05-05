@@ -1,0 +1,12 @@
+[
+{
+  "modid": "CerberusCore",
+  "name": "CerberusCore",
+  "description": "A universal core",
+  "version": "@VERSION@",
+  "authorList": [
+    "newmangamers",
+    "cazzar"
+  ]
+}
+]

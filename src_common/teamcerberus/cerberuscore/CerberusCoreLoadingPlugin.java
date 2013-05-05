@@ -4,7 +4,7 @@ import java.util.Map;
 
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 
-public class CerberusCoreLoadingPlugin implements IFMLLoadingPlugin{
+public class CerberusCoreLoadingPlugin implements IFMLLoadingPlugin {
 
 	@Override
 	public String[] getLibraryRequestClass() {
@@ -28,7 +28,7 @@ public class CerberusCoreLoadingPlugin implements IFMLLoadingPlugin{
 
 	@Override
 	public void injectData(Map<String, Object> data) {
-		
+
 	}
 
 }
