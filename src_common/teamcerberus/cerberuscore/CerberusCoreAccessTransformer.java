@@ -1,4 +1,4 @@
-package teamcerberus.cerberuscore.asm;
+package teamcerberus.cerberuscore;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
