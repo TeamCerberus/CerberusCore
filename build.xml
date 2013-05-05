@@ -12,6 +12,7 @@
        
         <echo>Installing Minecraft Forge...</echo>
         <unzip src="${mod.base}/minecraftforge-src-${minecraft.version}-${forge.version}.zip" dest="${mod.base}" />
+		<copy file="${mod.at}" tofile="${forge.mod.at}" />
         <exec executable="${python.exe}" dir="${forge.base}" failonerror="true">
             <arg value="${forge.base}/install.py" />
         </exec>
@@ -144,11 +145,13 @@
         <property name="mod.src" location="${mod.base}/src_common" />
 		<property name="mod.src_client" location="${mod.base}/src_client" />
         <property name="mod.bin" location="${mod.base}/bin" />
+		<property name="mod.at" location="${mod.base}/resources/cerberuscore_at.cfg" />
 
         <property name="temp.dir" location= "${mod.base}/tmp" />
         <property name="temp.src" location= "${temp.dir}/src" />
         
         <property name="forge.base" location="${mod.base}/forge" />
+		<property name="forge.mod.at" location="${forge.base}/accesstransformers/cerberuscore_at.cfg" />
         <property name="forge.jar.built" location="${mod.base}/minecraftforge-built.jar" />
         <property name="forge.accesstransformers" location="${forge.base}/accesstransformers" />
         <property name="mcp.base" location="${forge.base}/mcp" />
