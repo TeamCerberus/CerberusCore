@@ -10,18 +10,18 @@ import teamcerberus.cerberuscore.util.NetworkUtil;
 import cpw.mods.fml.relauncher.Side;
 
 public class NetworkManager {
-	private static NetworkManager		instance;
-	private CerberusServerPacketHandler	serverPacketHandler;
-	private CerberusClientPacketHandler	clientPacketHandler;
-	private HashMap<String, INetworkManagerPacketHandler> packetHandlers;
-	
+	private static NetworkManager							instance;
+	private CerberusServerPacketHandler						serverPacketHandler;
+	private CerberusClientPacketHandler						clientPacketHandler;
+	private HashMap<String, INetworkManagerPacketHandler>	packetHandlers;
+
 	private void setup() {
 		serverPacketHandler = new CerberusServerPacketHandler();
 		clientPacketHandler = new CerberusClientPacketHandler();
 		packetHandlers = new HashMap<String, INetworkManagerPacketHandler>();
-		
-//		packetHandlers.
-		
+
+		// packetHandlers.
+
 		String[] channels = new String[] { "syncedField" };
 
 		String[] prefixedChannels = MiscUtil.addPrefixToArray(channels,

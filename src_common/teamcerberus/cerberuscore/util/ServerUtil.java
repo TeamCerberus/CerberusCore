@@ -12,8 +12,7 @@ public class ServerUtil {
 
 	public static File getMinecraftFolder() {
 		if (NetworkUtil.isDedicatedServer()) {
-			return ServerUtil
-					.getServerInstance().getFile("");
+			return ServerUtil.getServerInstance().getFile("");
 		} else {
 			return Minecraft.getMinecraftDir();
 		}

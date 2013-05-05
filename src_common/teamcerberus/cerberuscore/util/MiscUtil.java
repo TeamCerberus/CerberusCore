@@ -1,5 +1,9 @@
 package teamcerberus.cerberuscore.util;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +39,25 @@ public class MiscUtil {
 			n[i] = o[i].replaceFirst(prefix, "");
 		}
 		return n;
+	}
+	
+	public static byte[] objectToBytes(Object obj) {
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			ObjectOutputStream os = new ObjectOutputStream(out);
+			os.writeObject(obj);
+			return out.toByteArray();
+		} catch (Exception e) {}
+		return new byte[] {};
+
+	}
+
+	public static Object objectFromBytes(byte[] data) {
+		try {
+			ByteArrayInputStream in = new ByteArrayInputStream(data);
+			ObjectInputStream is = new ObjectInputStream(in);
+			return is.readObject();
+		} catch (Exception e) {}
+		return null;
 	}
 }
