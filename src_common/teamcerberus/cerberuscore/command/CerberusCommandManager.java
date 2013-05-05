@@ -6,7 +6,7 @@ import net.minecraft.command.CommandHandler;
 import teamcerberus.cerberuscore.util.ServerUtil;
 
 public class CerberusCommandManager {
-	private static CerberusCommandManager			instance;
+	private static CerberusCommandManager		instance;
 	private HashMap<String, CerberusCommand>	commands;
 
 	public CerberusCommandManager() {
@@ -14,7 +14,8 @@ public class CerberusCommandManager {
 	}
 
 	public void registerCommand(CerberusCommand command) {
-		((CommandHandler)ServerUtil.getServerInstance().getCommandManager()).registerCommand(command);
+		((CommandHandler) ServerUtil.getServerInstance().getCommandManager())
+				.registerCommand(command);
 		commands.put(command.getCommandName(), command);
 	}
 
@@ -23,8 +24,7 @@ public class CerberusCommandManager {
 	}
 
 	public static CerberusCommandManager getInstance() {
-		if(instance == null)
-			init();
+		if (instance == null) init();
 		return instance;
 	}
 }

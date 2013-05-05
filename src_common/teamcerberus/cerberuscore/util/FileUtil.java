@@ -17,7 +17,7 @@ public class FileUtil {
 	public static Object readObject(File file) {
 		return readObject(file.getPath());
 	}
-	
+
 	public static void saveObject(Object o, String file) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(file);
@@ -25,8 +25,7 @@ public class FileUtil {
 			out.writeObject(o);
 			out.close();
 			fileOut.close();
-		} catch (IOException i) {
-		}
+		} catch (IOException i) {}
 	}
 
 	public static Object readObject(String file) {
@@ -38,8 +37,7 @@ public class FileUtil {
 			in.close();
 			fileIn.close();
 			return o;
-		} catch (Exception i) {
-		}
+		} catch (Exception i) {}
 		return null;
 	}
 }
