@@ -5,6 +5,8 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import cpw.mods.fml.common.network.Player;
 
 public interface INetworkManagerPacketHandler {
+	public String getName();
+	
 	public void init();
 
 	public void tick();

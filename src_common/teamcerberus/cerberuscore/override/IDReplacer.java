@@ -25,7 +25,15 @@ public class IDReplacer {
 		Item.itemsList[itemId] = item;
 		GameData.newItemAdded(item);
 	}
-
+	
+	public static void setBlock(int blockId, Block block){
+		Block.blocksList[blockId] = block;
+		block.blockID = blockId;
+		Block.opaqueCubeLookup[blockId] = block.isOpaqueCube();
+		Block.lightOpacity[blockId] = block.isOpaqueCube() ? 255 : 0;
+		Block.canBlockGrass[blockId] = !block.blockMaterial.getCanBlockGrass();
+	}
+	
 	public static void clearBlock(int blockId) {
 		Block.blocksList[blockId] = null;
 		Block.opaqueCubeLookup[blockId] = false;

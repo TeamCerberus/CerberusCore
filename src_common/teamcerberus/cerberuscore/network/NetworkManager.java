@@ -5,6 +5,7 @@ import java.util.HashMap;
 import teamcerberus.cerberuscore.CerberusCore;
 import teamcerberus.cerberuscore.network.client.CerberusClientPacketHandler;
 import teamcerberus.cerberuscore.network.server.CerberusServerPacketHandler;
+import teamcerberus.cerberuscore.network.syncedfield.SyncedFieldManager;
 import teamcerberus.cerberuscore.util.MiscUtil;
 import teamcerberus.cerberuscore.util.NetworkUtil;
 import cpw.mods.fml.relauncher.Side;
@@ -21,7 +22,9 @@ public class NetworkManager {
 		packetHandlers = new HashMap<String, INetworkManagerPacketHandler>();
 
 		// packetHandlers.
-
+		registerNetworkHandler(new SyncedFieldManager());
+		
+		//Channel  names have a limit of 16 chars, they will have CCN_ added to them, so 16-3
 		String[] channels = new String[] { "syncedField" };
 
 		String[] prefixedChannels = MiscUtil.addPrefixToArray(channels,
@@ -31,7 +34,12 @@ public class NetworkManager {
 		NetworkUtil.registerChannels(prefixedChannels, clientPacketHandler,
 				Side.CLIENT);
 	}
-
+	
+	private void registerNetworkHandler(INetworkManagerPacketHandler handler){
+		packetHandlers.put(handler.getName(), handler);
+		handler.init();
+	}
+	
 	public static void init() {
 		instance = new NetworkManager();
 		instance.setup();

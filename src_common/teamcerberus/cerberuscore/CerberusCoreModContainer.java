@@ -9,6 +9,7 @@ import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class CerberusCoreModContainer extends DummyModContainer {
 	public CerberusCoreModContainer() {
@@ -31,5 +32,10 @@ public class CerberusCoreModContainer extends DummyModContainer {
 	@Subscribe
 	public void init(FMLInitializationEvent ev) {
 		CerberusCore.init();
+	}
+	
+	@Subscribe
+	public void preInit(FMLPreInitializationEvent ev) {
+		CerberusCore.preInit();
 	}
 }
