@@ -14,31 +14,31 @@ import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
 public class ClientTickHandler implements ITickHandler {
-	
-	private static final Minecraft mc = Minecraft.getMinecraft();
-	
+
+	private static final Minecraft	mc	= Minecraft.getMinecraft();
+
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		if ((mc.theWorld != null) && (mc.theWorld.playerEntities.size() > 0))
-	    {
-	      List<?> players = mc.theWorld.playerEntities;
+		if ((mc.theWorld != null) && (mc.theWorld.playerEntities.size() > 0)) {
+			List<?> players = mc.theWorld.playerEntities;
 
-	      for (int counter = 0; counter < players.size(); counter++)
-	      {
-	        if (players.get(counter) != null) {
-	          EntityPlayer thePlayer = (EntityPlayer)players.get(counter);
-	          if (ClientUtil.getCape(thePlayer.username) == null) continue;
-	          
-	          String oldCloak = thePlayer.cloakUrl;
+			for (int counter = 0; counter < players.size(); counter++) {
+				if (players.get(counter) != null) {
+					EntityPlayer thePlayer = (EntityPlayer) players
+							.get(counter);
+					if (ClientUtil.getCape(thePlayer.username) == null) continue;
 
-	          String newCloakUrl = ClientUtil.getCape(thePlayer.username);
-	          thePlayer.cloakUrl = newCloakUrl;
+					String oldCloak = thePlayer.cloakUrl;
 
-	          if (thePlayer.cloakUrl != oldCloak)
-	            mc.renderEngine.obtainImageData(thePlayer.cloakUrl, new ImageBufferDownload());
-	        }
-	      }
-	    }
+					String newCloakUrl = ClientUtil.getCape(thePlayer.username);
+					thePlayer.cloakUrl = newCloakUrl;
+
+					if (thePlayer.cloakUrl != oldCloak) mc.renderEngine
+							.obtainImageData(thePlayer.cloakUrl,
+									new ImageBufferDownload());
+				}
+			}
+		}
 	}
 
 	@Override
