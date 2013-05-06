@@ -39,41 +39,38 @@ public class ConfigurationParser {
 							.getBoolean(def);
 
 					field.setBoolean(instance, value);
-				}
-				else if (type == double.class) {
+				} else if (type == double.class) {
 					Double def = field.getDouble(instance);
 					Double value = config.get(annotation.category(),
 							annotation.key(), def, annotation.comment())
 							.getDouble(def);
 
 					field.setDouble(instance, value);
-				}
-				else if (type == String.class) {
+				} else if (type == String.class) {
 					String def = (String) field.get(instance);
 					String value = config.get(annotation.category(),
 							annotation.key(), def, annotation.comment())
 							.getString();
 
 					field.set(instance, value);
-				}
-				else if (type == Integer.class || type == int.class) {
+				} else if (type == Integer.class || type == int.class) {
 					Integer def = field.getInt(instance);
 					Integer value = config.get(annotation.category(),
 							annotation.key(), def, annotation.comment())
 							.getInt(def);
 
 					field.setInt(instance, value);
-				}
-				else if (type == Property.class) {
+				} else if (type == Property.class) {
 					// Property def = (Property)field.get(instance);
 					Property value = config.get(annotation.category(),
 							annotation.key(), 0, annotation.comment());
 
 					field.set(instance, value);
+				} else {
+					CerberusLogger.logWarning("Type \"" + type.getName()
+							+ "\" is not supportd with annotations");
 				}
-				else
-					CerberusLogger.logWarning("Type \"" + type.getName() + "\" is not supportd with annotations");
-				
+
 			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {

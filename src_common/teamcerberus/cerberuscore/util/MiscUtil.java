@@ -40,7 +40,7 @@ public class MiscUtil {
 		}
 		return n;
 	}
-	
+
 	public static byte[] objectToBytes(Object obj) {
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
