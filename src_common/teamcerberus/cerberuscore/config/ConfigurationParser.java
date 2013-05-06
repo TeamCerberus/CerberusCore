@@ -1,6 +1,7 @@
 package teamcerberus.cerberuscore.config;
 
 import java.lang.reflect.Field;
+import java.util.Locale.Category;
 
 import teamcerberus.cerberuscore.util.CerberusLogger;
 
@@ -85,6 +86,29 @@ public class ConfigurationParser {
 
 			field.set(instance, value);
 		} else if (type == Integer.class || type == int.class) {
+			if (field.isAnnotationPresent(BlockID.class)) {
+				Object def = field.get(instance);
+
+				Object value;
+				if (!comment.isEmpty()) value = config.getBlock(category, key,
+						(Integer) def, comment).getInt();
+				else value = config.getBlock(category, key, (Integer) def).getInt();
+				
+				field.set(instance, value);
+				return;
+			}
+			if (field.isAnnotationPresent(ItemID.class)) {
+				Object def = field.get(instance);
+
+				Object value;
+				if (!comment.isEmpty()) value = config.getItem(category, key,
+						(Integer) def, comment).getInt();
+				else value = config.getItem(category, key, (Integer) def).getInt();
+				
+				field.set(instance, value);
+				return;
+			}
+			
 			Object def = field.get(instance);
 
 			Object value;
@@ -108,7 +132,7 @@ public class ConfigurationParser {
 			CerberusLogger.logWarning("Type \"" + type.getName()
 					+ "\" is not supportd with annotations");
 		}
-	}
+	}	
 
 	public static void ParseClass(Object instance, Configuration config) {
 		Class clazz = instance.getClass();
@@ -118,7 +142,7 @@ public class ConfigurationParser {
 		if (annotation == null) {
 			return;
 		}
-		String category = annotation.category();
+		String category = (annotation.category().isEmpty()) ? clazz.getSimpleName() : annotation.category();
 		Field[] fields = clazz.getDeclaredFields();
 		
 		for (Field field : fields) {
