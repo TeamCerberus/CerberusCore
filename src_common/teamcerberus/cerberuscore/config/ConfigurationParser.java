@@ -148,7 +148,7 @@ public class ConfigurationParser {
 		for (Field field : fields) {
 			if (!field.isAccessible()) field.setAccessible(true);
 			ConfigurationComment commentAnnotation = field.getAnnotation(ConfigurationComment.class);
-			String comment = (commentAnnotation == null) ?  "" : commentAnnotation.comment();
+			String comment = (commentAnnotation == null) ?  "" : commentAnnotation.value();
 			String key = field.getName();
 			
 			try {
