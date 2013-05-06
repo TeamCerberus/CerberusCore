@@ -13,7 +13,7 @@ public class ClientUtil {
 	private static HashMap<String, String>	capes;
 
 	public static void init() {
-		capes = new HashMap<>();
+		capes = new HashMap<String, String>();
 		addCape("fzerox", "");
 		addCape("cazzar",
 				"");
