@@ -2,6 +2,8 @@ package teamcerberus.cerberuscore.config;
 
 import java.lang.reflect.Field;
 
+import teamcerberus.cerberuscore.util.CerberusLogger;
+
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 
@@ -38,7 +40,7 @@ public class ConfigurationParser {
 
 					field.setBoolean(instance, value);
 				}
-				if (type == Double.class) {
+				else if (type == double.class) {
 					Double def = field.getDouble(instance);
 					Double value = config.get(annotation.category(),
 							annotation.key(), def, annotation.comment())
@@ -46,7 +48,7 @@ public class ConfigurationParser {
 
 					field.setDouble(instance, value);
 				}
-				if (type == String.class) {
+				else if (type == String.class) {
 					String def = (String) field.get(instance);
 					String value = config.get(annotation.category(),
 							annotation.key(), def, annotation.comment())
@@ -54,7 +56,7 @@ public class ConfigurationParser {
 
 					field.set(instance, value);
 				}
-				if (type == Integer.class || type == int.class) {
+				else if (type == Integer.class || type == int.class) {
 					Integer def = field.getInt(instance);
 					Integer value = config.get(annotation.category(),
 							annotation.key(), def, annotation.comment())
@@ -62,14 +64,16 @@ public class ConfigurationParser {
 
 					field.setInt(instance, value);
 				}
-				if (type == Property.class) {
+				else if (type == Property.class) {
 					// Property def = (Property)field.get(instance);
 					Property value = config.get(annotation.category(),
 							annotation.key(), 0, annotation.comment());
 
 					field.set(instance, value);
 				}
-
+				else
+					CerberusLogger.logWarning("Type \"" + type.getName() + "\" is not supportd with annotations");
+				
 			} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
