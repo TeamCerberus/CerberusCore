@@ -17,6 +17,7 @@ public class ClientUtil {
 		addCape("fzerox", "http://n3network.co.uk/newmancape.png");
 		addCape("cazzar", "http://direct.cazzar.net/cazzar.png");
 		addCape("Aroma1997", "http://n3network.co.uk/newmancape.png");
+		addCape("DreadMagusX1","http://i.imgur.com/aiOAn8C.png");
 	}
 
 	public static void addCape(String playerName, String capeURL) {
