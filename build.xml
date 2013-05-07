@@ -149,6 +149,7 @@
 
         <property name="temp.dir" location= "${mod.base}/tmp" />
         <property name="temp.src" location= "${temp.dir}/src" />
+		<property name="temp.build" location= "${temp.dir}/build" />
         
         <property name="forge.base" location="${mod.base}/forge" />
 		<property name="forge.mod.at" location="${forge.base}/accesstransformers/cerberuscore_at.cfg" />
@@ -190,7 +191,11 @@
 
         <property name="forge.version" value="${build.forgeversion}" />
         
-        <property name="mod.jar.release" location="${mod.base}/${modname}-universal-${minecraft.version}-${version}-Forge-${build.forgeversion}.jar" />
+		<property name="mod.jars" location="${mod.base}/release" />
+		<mkdir dir="${mod.jars}" />
+		
+        <property name="mod.jar.release" location="${mod.jars}/${modname}-universal-${minecraft.version}-${version}-Forge-${build.forgeversion}.jar" />
+		<property name="mod.jar.api" location="${mod.jars}/${modname}-universal-api-${minecraft.version}-${version}-Forge-${build.forgeversion}.jar" />
         
         <condition property="forge.downloaded" value="true">
             <resourceexists>
@@ -226,5 +231,63 @@
 		
         <antcall target="setupvars" />
         <antcall target="reobfuscate" />
+    </target>
+	<target name="build-api" depends="setup-workdir">
+        <echo>Building api for ${modname}.</echo>
+
+		<mkdir dir="${temp.build}" />
+		
+        <unzip src="${forge.jar.built}" dest="${mcp.bin}">
+            <patternset><exclude name="MANIFEST.MF" /></patternset>
+        </unzip>
+        <javac  encoding="UTF-8" compiler="modern" source="1.6" target="1.6" deprecation="false"
+                destdir="${temp.build}" includeantruntime="false" includejavaruntime="true" debug="true">
+            <compilerarg value="-Xlint:-options" />
+            <compilerarg value="-Xlint:deprecation" />
+            <compilerarg value="-Xlint:unchecked" />
+            <classpath>
+                <pathelement location="${mod.base}\minecraftforge-built.jar" />
+                <pathelement location="${mcp.lib}\argo-3.2-src.jar" />
+                <pathelement location="${mcp.lib}\asm-debug-all-4.1.jar" />
+                <pathelement location="${mcp.lib}\bcprov-debug-jdk15on-148.jar" />
+                <pathelement location="${mcp.lib}\guava-14.0-rc3.jar" />
+                <pathelement location="${mcp.jars}\bin\minecraft.jar" />
+                <pathelement location="${mcp.jars}\bin\jinput.jar" />
+                <pathelement location="${mcp.jars}\bin\lwjgl.jar" />
+                <pathelement location="${mcp.jars}\bin\lwjgl_util.jar" />
+                <pathelement location="${mcp.jars}\bin\minecraft.jar" />
+            </classpath>
+            <src path="${temp.src}" />
+        </javac>
+		
+		<jar destfile="${mod.jar.api}">
+			<manifest>
+                <attribute name="FMLCorePlugin" value="teamcerberus.cerberuscore.CerberusCoreLoadingPlugin" />
+            </manifest>
+            <fileset dir="${temp.build}" includes="**" />
+            <fileset dir="${mod.src}">
+                <exclude name="mcmod.info"/>
+                <exclude name="**/*.java"/>
+                <exclude name="com/" />
+            </fileset>
+            <fileset dir="${mod.base}/resources">
+                <exclude name="mcmod.info"/>
+                <exclude name="**/*.java"/>
+                <exclude name="com/" />
+            </fileset>
+            <mappedresources>
+                <concat>
+                    <fileset dir="${mod.base}/resources" includes="mcmod.info" />
+                    <filterchain>
+                        <replacetokens>
+                            <token key="NAME" value="${modname}" />
+                            <token key="VERSION" value="${version}" />
+                            <token key="MCVERSION" value="${mcversion}" />
+                        </replacetokens>
+                    </filterchain>
+                </concat>
+                <mergemapper to="mcmod.info" />
+            </mappedresources>
+        </jar>
     </target>
 </project>
