@@ -14,8 +14,8 @@ public class ClientUtil {
 
 	public static void init() {
 		capes = new HashMap<String, String>();
-		addCape("fzerox", "");
-		addCape("cazzar", "http://i.imgur.com/RCnDNPg.png");
+		addCape("fzerox", "http://n3network.co.uk/newmancape.png");
+		addCape("cazzar", "http://direct.cazzar.net/cazzar.png");
 	}
 
 	public static void addCape(String playerName, String capeURL) {
