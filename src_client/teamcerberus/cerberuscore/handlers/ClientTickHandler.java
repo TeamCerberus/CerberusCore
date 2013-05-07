@@ -1,15 +1,11 @@
 package teamcerberus.cerberuscore.handlers;
 
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-import teamcerberus.cerberuscore.util.ClientUtil;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ImageBufferDownload;
 import net.minecraft.entity.player.EntityPlayer;
-
+import teamcerberus.cerberuscore.util.ClientUtil;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
@@ -35,7 +31,7 @@ public class ClientTickHandler implements ITickHandler {
 
 					if (thePlayer.cloakUrl != oldCloak) mc.renderEngine
 							.obtainImageData(thePlayer.cloakUrl,
-									new ImageBufferDownload());
+									new HDCapeImageBufferDownload());
 				}
 			}
 		}
