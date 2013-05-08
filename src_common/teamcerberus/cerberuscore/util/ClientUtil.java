@@ -14,10 +14,10 @@ public class ClientUtil {
 
 	public static void init() {
 		capes = new HashMap<String, String>();
-		addCape("fzerox", "http://n3network.co.uk/newmancape.png");
-		addCape("cazzar", "http://direct.cazzar.net/cazzar.png");
-		addCape("Aroma1997", "http://n3network.co.uk/newmancape.png");
-		addCape("DreadMagusX1","http://i.imgur.com/aiOAn8C.png");
+		addCape("fzerox", "https://raw.github.com/TeamCerberus/TeamCapes/master/teamDefault.png");
+		addCape("cazzar", "https://raw.github.com/TeamCerberus/TeamCapes/master/cazzar.png");
+		addCape("Aroma1997", "https://raw.github.com/TeamCerberus/TeamCapes/master/teamDefault.png");
+		addCape("DreadMagusX1","https://raw.github.com/TeamCerberus/TeamCapes/master/DreadMagusX1.png");
 	}
 
 	public static void addCape(String playerName, String capeURL) {
