@@ -9,7 +9,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class HDCapeImageBufferDownload implements IImageBuffer {
+public class HDImageBufferDownload implements IImageBuffer {
 	private int	imageWidth;
 	private int	imageHeight;
 
