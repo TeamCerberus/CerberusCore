@@ -6,6 +6,7 @@ import teamcerberus.cerberuscore.command.CerberusCommandManager;
 import teamcerberus.cerberuscore.handlers.ClientTickHandler;
 import teamcerberus.cerberuscore.util.CerberusLogger;
 import teamcerberus.cerberuscore.util.ClientUtil;
+import teamcerberus.cerberuscore.util.ServerUtil;
 
 public class CerberusCore {
 	public static final String	id				= "CerberusCore";
@@ -18,7 +19,7 @@ public class CerberusCore {
 		CerberusCommandManager.init();
 		if (ClientUtil.isClient())
 			ClientUtil.init();
-		//server init if needed.
+		ServerUtil.init();
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		CerberusLogger.logInfo("Loaded!");
 	}
