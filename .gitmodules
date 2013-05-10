@@ -1,3 +1,0 @@
-[submodule "src_tests"]
-	path = src_test
-	url = https://github.com/TeamCerberus/CerberusCore-tests.git
