@@ -18,7 +18,7 @@ public class ClientUtil {
 		skins = new HashMap<String, String>();
 		setCape("fzerox", "https://raw.github.com/TeamCerberus/TeamCapes/master/teamDefault.png");
 		setCape("cazzar", "https://raw.github.com/TeamCerberus/TeamCapes/master/cazzar.png");
-		setCape("Aroma1997", "https://raw.github.com/TeamCerberus/TeamCapes/master/teamDefault.png");
+		setCape("Aroma1997", "https://raw.github.com/TeamCerberus/TeamCapes/master/Aroma1997.png");
 		setCape("DreadMagusX1","https://raw.github.com/TeamCerberus/TeamCapes/master/DreadMagusX1.png");
 	}
 
