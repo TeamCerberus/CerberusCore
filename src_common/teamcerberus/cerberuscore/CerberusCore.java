@@ -1,8 +1,12 @@
 package teamcerberus.cerberuscore;
 
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import teamcerberus.cerberuscore.command.CerberusCommandManager;
-import teamcerberus.cerberuscore.network.NetworkManager;
+import teamcerberus.cerberuscore.handlers.ClientTickHandler;
 import teamcerberus.cerberuscore.util.CerberusLogger;
+import teamcerberus.cerberuscore.util.ClientUtil;
+import teamcerberus.cerberuscore.util.ServerUtil;
 
 public class CerberusCore {
 	public static final String	id				= "CerberusCore";
@@ -13,7 +17,10 @@ public class CerberusCore {
 		CerberusLogger.logInfo("Cerberus Core Loading...");
 		CerberusLogger.logInfo("Version " + version);
 		CerberusCommandManager.init();
-		NetworkManager.init();
+		if (ClientUtil.isClient())
+			ClientUtil.init();
+		ServerUtil.init();
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		CerberusLogger.logInfo("Loaded!");
 	}
 	

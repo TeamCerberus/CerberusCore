@@ -1,9 +1,12 @@
 package teamcerberus.cerberuscore.util;
 
 import java.io.File;
+
+import teamcerberus.cerberuscore.events.PlayerTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.MinecraftServer;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ServerUtil {
 	public static MinecraftServer getServerInstance() {
@@ -26,5 +29,9 @@ public class ServerUtil {
 
 	public static String getWorldName() {
 		return ServerUtil.getServerInstance().getFolderName();
+	}
+	
+	public static void init() {
+		GameRegistry.registerPlayerTracker(new PlayerTracker());
 	}
 }
