@@ -13,9 +13,12 @@
         <echo>Installing Minecraft Forge...</echo>
         <unzip src="${mod.base}/minecraftforge-src-${minecraft.version}-${forge.version}.zip" dest="${mod.base}" />
 		<copy file="${mod.at}" tofile="${forge.mod.at}" />
-        <exec executable="${python.exe}" dir="${forge.base}" failonerror="true">
+        <!--<exec executable="${python.exe}" dir="${forge.base}" failonerror="true">
             <arg value="${forge.base}/install.py" />
-        </exec>
+        </exec>-->
+		<exec dir="${forge.base}" executable="python" failonerror="true">
+			<arg line="${forge.base}/install.py" />
+		</exec>
 		
 		<jar destfile="${mcp.jars}/coremods/${modname}_dummy.jar">
             <manifest>
