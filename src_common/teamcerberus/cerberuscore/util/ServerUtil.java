@@ -2,9 +2,9 @@ package teamcerberus.cerberuscore.util;
 
 import java.io.File;
 
-import teamcerberus.cerberuscore.events.PlayerTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.MinecraftServer;
+import teamcerberus.cerberuscore.events.PlayerTracker;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 

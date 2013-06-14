@@ -15,7 +15,7 @@ public class CerberusCoreModContainer extends DummyModContainer {
 	public CerberusCoreModContainer() {
 		super(new ModMetadata());
 		ModMetadata myMeta = super.getMetadata();
-		myMeta.authorList = Arrays.asList(new String[] { "newmangamers",
+		myMeta.authorList = Arrays.asList(new String[] { "csnewman",
 				"cazzar" });
 		myMeta.description = "A universal core.";
 		myMeta.modId = CerberusCore.id;
@@ -36,6 +36,6 @@ public class CerberusCoreModContainer extends DummyModContainer {
 	
 	@Subscribe
 	public void preInit(FMLPreInitializationEvent ev) {
-		CerberusCore.preInit();
+		CerberusCore.preInit(ev);
 	}
 }

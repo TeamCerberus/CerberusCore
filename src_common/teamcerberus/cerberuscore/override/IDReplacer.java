@@ -13,7 +13,7 @@ public class IDReplacer {
 		clearBlock(block.blockID);
 
 		Block.blocksList[blockId] = block;
-		block.blockID = blockId;
+//		block.blockID = blockId;
 		Block.opaqueCubeLookup[blockId] = block.isOpaqueCube();
 		Block.lightOpacity[blockId] = block.isOpaqueCube() ? 255 : 0;
 		Block.canBlockGrass[blockId] = !block.blockMaterial.getCanBlockGrass();
@@ -28,7 +28,7 @@ public class IDReplacer {
 	
 	public static void setBlock(int blockId, Block block){
 		Block.blocksList[blockId] = block;
-		block.blockID = blockId;
+//		block.blockID = blockId;
 		Block.opaqueCubeLookup[blockId] = block.isOpaqueCube();
 		Block.lightOpacity[blockId] = block.isOpaqueCube() ? 255 : 0;
 		Block.canBlockGrass[blockId] = !block.blockMaterial.getCanBlockGrass();
