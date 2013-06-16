@@ -7,9 +7,11 @@ import net.minecraftforge.common.ForgeDirection;
 
 public class TileMultiblock extends TileEntity{
 	private ArrayList<MBBox> boxes = new ArrayList<MBBox>();
+	private MBRaytraceResult selectedBox;
 	
 	public TileMultiblock(){
-		boxes.add(new MBBox(0, 0, 0, 0.5f, 0.5f, 0.1f));
+		boxes.add(new MBBox(0f, 0f, 0f, 1f, 1f, 0.1f, true, "example"));
+		boxes.add(new MBBox(0f, 0f, 0.9f, 1f, 1f, 0.1f, true, "example"));
 	}
 	
 	public boolean isSolid(ForgeDirection side) {
@@ -18,6 +20,14 @@ public class TileMultiblock extends TileEntity{
 
 	public ArrayList<MBBox> getBoxes() {
 		return boxes;
+	}
+	
+	public MBRaytraceResult getSelectedBox(){
+		return selectedBox;
+	}
+	
+	public void setSelectedBox(MBRaytraceResult result){
+		this.selectedBox = result;
 	}
 
 }

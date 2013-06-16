@@ -2,6 +2,8 @@ package teamcerberus.cerberuscore;
 
 import java.util.Arrays;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 
@@ -21,6 +23,7 @@ public class CerberusCoreModContainer extends DummyModContainer {
 		myMeta.modId = CerberusCore.id;
 		myMeta.version = CerberusCore.version;
 		myMeta.name = CerberusCore.id;
+		MinecraftForge.EVENT_BUS.register(new CerberusCoreSubcriber());
 	}
 
 	@Override

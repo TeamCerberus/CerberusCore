@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import teamcerberus.cerberuscore.render.CerbRenderManager;
 import teamcerberus.cerberuscore.util.ClientUtil;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -62,5 +63,6 @@ public class ClientTickHandler implements ITickHandler {
 				}
 			}
 		}
+		CerbRenderManager.tickTextures();
 	}
 }
