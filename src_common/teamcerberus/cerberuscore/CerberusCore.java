@@ -32,10 +32,11 @@ public class CerberusCore {
 		config.save();
 		
 		CerberusCommandManager.init();
-		if (ClientUtil.isClient())
+		if (ClientUtil.isClient()) {
 			ClientUtil.init();
+			TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+		}
 		ServerUtil.init();
-		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		MultiblockManager.init();
 		CerberusLogger.logInfo("Loaded!");
 	}
