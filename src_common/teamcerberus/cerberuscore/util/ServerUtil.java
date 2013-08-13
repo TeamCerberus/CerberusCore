@@ -17,7 +17,7 @@ public class ServerUtil {
 		if (NetworkUtil.isDedicatedServer()) {
 			return ServerUtil.getServerInstance().getFile("");
 		} else {
-			return Minecraft.getMinecraftDir();
+			return Minecraft.getMinecraft().mcDataDir;
 		}
 	}
 

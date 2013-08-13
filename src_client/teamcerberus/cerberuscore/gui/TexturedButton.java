@@ -4,15 +4,16 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.util.ResourceLocation;
 
 public class TexturedButton extends GuiButton {
 
-	private String	textureFile;
+	private ResourceLocation	textureFile;
 	private int		xOffset, yOffset, yOffsetForDisabled, xOffsetForDisabled,
 			xOffsetForHovered, yOffsetForHovered;
 
 	public TexturedButton(int id, int xPosition, int yPosition, int width,
-			int height, String textureFile, int xOffset, int yOffset,
+			int height, ResourceLocation textureFile, int xOffset, int yOffset,
 			int xOffsetForDisabled, int yOffsetForDisabled,
 			int xOffsetForHovered, int yOffsetForHovered) {
 
@@ -30,7 +31,7 @@ public class TexturedButton extends GuiButton {
 	@Override
 	public void drawButton(Minecraft mc, int par2, int par3) {
 		if (drawButton) {
-			mc.renderEngine.bindTexture(textureFile);
+			mc.func_110434_K().func_110577_a(textureFile);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			field_82253_i = par2 >= xPosition && par3 >= yPosition
 					&& par2 < xPosition + width && par3 < yPosition + height;
