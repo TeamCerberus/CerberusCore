@@ -4,8 +4,7 @@ import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import teamcerberus.cerberuscore.command.CerberusCommandManager;
 import teamcerberus.cerberuscore.handlers.ClientTickHandler;
-import teamcerberus.cerberuscore.microblock.MultiblockManager;
-import teamcerberus.cerberuscore.network.NetworkManager;
+import teamcerberus.cerberuscore.multiblock.MultiblockManager;
 import teamcerberus.cerberuscore.util.CerberusLogger;
 import teamcerberus.cerberuscore.util.ClientUtil;
 import teamcerberus.cerberuscore.util.ServerUtil;
@@ -33,17 +32,15 @@ public class CerberusCore {
 		config.save();
 		
 		CerberusCommandManager.init();
-		ServerUtil.init();
-		MultiblockManager.init();
 		if (ClientUtil.isClient())
-			CerberusCoreClient.preInit(ev);
+			ClientUtil.init();
+		ServerUtil.init();
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+		MultiblockManager.init();
 		CerberusLogger.logInfo("Loaded!");
 	}
 	
 	protected static void init() {
-		NetworkManager.init();
-		if (ClientUtil.isClient())
-			CerberusCoreClient.init();
 	}
 
 	protected static void preMCInit() {

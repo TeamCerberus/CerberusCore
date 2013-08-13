@@ -3,7 +3,6 @@ package teamcerberus.cerberuscore.network.syncedfield;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import net.minecraft.network.INetworkManager;
@@ -12,7 +11,6 @@ import teamcerberus.cerberuscore.network.INetworkManagerPacketHandler;
 import teamcerberus.cerberuscore.network.NetworkManager;
 import teamcerberus.cerberuscore.util.MiscUtil;
 import cpw.mods.fml.common.network.Player;
-import cpw.mods.fml.relauncher.Side;
 
 public class SyncedFieldManager implements INetworkManagerPacketHandler {
 	private static SyncedFieldManager	instance;
@@ -65,7 +63,7 @@ public class SyncedFieldManager implements INetworkManagerPacketHandler {
 	}
 
 	@Override
-	public void onPacketData(Side side, INetworkManager network,
+	public void onPacketData(NetworkManager manager, INetworkManager network,
 			Packet250CustomPayload packet, Player player) {
 		// TODO Auto-generated method stub
 
@@ -78,10 +76,5 @@ public class SyncedFieldManager implements INetworkManagerPacketHandler {
 	@Override
 	public String getName() {
 		return "syncedField";
-	}
-
-	@Override
-	public void addNetworkChannel(ArrayList<String> list) {
-		list.add("syncedField");
 	}
 }
